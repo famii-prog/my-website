@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Famii Mahadii | Different Portfolio</title>
+    <style>
+      :root {
+        --bg: #f7f1ea;
+        --bg-2: #f2e7dc;
+        --surface: #fffdfb;
+        --card: #ffffff;
+        --primary: #f97316;
+        --primary-dark: #c2410c;
+        --secondary: #0f766e;
+        --purple: #6d28d9;
+        --text: #1f2937;
+        --muted: #5f6b7a;
+        --line: rgba(31, 41, 55, 0.1);
+        --shadow: 0 20px 45px rgba(31, 41, 55, 0.12);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+        background:
+          linear-gradient(180deg, rgba(2, 6, 23, 0.30), rgba(8, 15, 32, 0.72)),
+          url('https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=1800&q=80') center/cover no-repeat fixed;
+        color: #f8fafc;
+        line-height: 1.7;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .container {
+        width: min(1120px, calc(100% - 32px));
+        margin: 0 auto;
+      }
+
+      .topbar {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        background: rgba(5, 8, 18, 0.18);
+        backdrop-filter: blur(12px);
+        border-bottom: 1px solid rgba(255,255,255,0.14);
+      }
+
+      .nav {
+        min-height: 74px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .brand-mark {
+        width: 38px;
+        height: 38px;
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        background: linear-gradient(135deg, var(--primary), var(--purple));
+        color: white;
+        box-shadow: var(--shadow);
+      }
+
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 26px;
+        color: rgba(255,255,255,0.9);
+        font-weight: 600;
+      }
+
+      .nav-links a:hover {
+        color: white;
+      }
+
+      .nav-btn {
+        padding: 0.8rem 1.15rem;
+        border-radius: 999px;
+        background: rgba(255,255,255,0.09);
+        color: white;
+        border: 1px solid rgba(255,255,255,0.2);
+        font-weight: 700;
+      }
+
+      .hero {
+        padding: 72px 0 70px;
+      }
+
+      .hero-grid {
+        display: grid;
+        grid-template-columns: 1.15fr 0.85fr;
+        gap: 35px;
+        align-items: center;
+      }
+
+      .eyebrow {
+        display: inline-block;
+        padding: 0.5rem 0.8rem;
+        border-radius: 999px;
+        background: rgba(148, 163, 184, 0.12);
+        color: #dbeafe;
+        font-size: 0.74rem;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      h1 {
+        margin: 18px 0 18px;
+        font-size: clamp(3rem, 6vw, 5.3rem);
+        line-height: 0.96;
+        letter-spacing: -0.07em;
+      }
+
+      .highlight {
+        color: #c4b5fd;
+      }
+
+      .lead {
+        max-width: 620px;
+        margin: 0;
+        color: rgba(255, 255, 255, 0.9);
+        font-size: 1.08rem;
+      }
+
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 14px;
+        margin-top: 30px;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 1rem 1.4rem;
+        border-radius: 14px;
+        font-weight: 700;
+        transition: transform 0.2s ease;
+      }
+
+      .btn:hover {
+        transform: translateY(-2px);
+      }
+
+      .btn-primary {
+        background: linear-gradient(135deg, var(--primary), #fb923c);
+        color: white;
+        box-shadow: var(--shadow);
+      }
+
+      .btn-secondary {
+        background: rgba(15, 118, 110, 0.08);
+        color: var(--secondary);
+        border: 1px solid rgba(15, 118, 110, 0.18);
+      }
+
+      .mini-stats {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        margin-top: 30px;
+      }
+
+      .mini-stat {
+        min-width: 110px;
+        padding: 12px 14px;
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        background: rgba(255, 255, 255, 0.5);
+      }
+
+      .mini-stat strong {
+        display: block;
+        color: var(--text);
+        font-size: 1.3rem;
+      }
+
+      .mini-stat span {
+        font-size: 0.8rem;
+        color: var(--muted);
+      }
+
+      .photo-card {
+        background: rgba(255,255,255,0.18);
+        border: 1px solid rgba(255,255,255,0.25);
+        border-radius: 28px;
+        padding: 24px;
+        box-shadow: var(--shadow);
+        backdrop-filter: blur(6px);
+      }
+
+      .photo-box {
+        background: linear-gradient(135deg, rgba(10, 15, 20, 0.28), rgba(12, 20, 30, 0.18));
+        border-radius: 24px;
+        padding: 26px;
+        text-align: center;
+        border: 1px solid rgba(255,255,255,0.2);
+      }
+
+      .avatar {
+        width: 122px;
+        height: 122px;
+        border-radius: 50%;
+        margin: 0 auto 20px;
+        display: grid;
+        place-items: center;
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: white;
+        background: linear-gradient(135deg, var(--primary), var(--purple));
+        box-shadow: 0 18px 28px rgba(109, 40, 217, 0.18);
+      }
+
+      .photo-box h3 {
+        margin: 0;
+        font-size: 2rem;
+        color: white;
+      }
+
+      .photo-box p {
+        margin: 8px 0 18px;
+        color: rgba(255,255,255,0.85);
+      }
+
+      .info-row {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+      }
+
+      .info-box {
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        background: rgba(255, 255, 255, 0.6);
+        padding: 14px 12px;
+      }
+
+      .info-box span {
+        display: block;
+        font-size: 0.72rem;
+        color: rgba(255, 255, 255, 0.72);
+      }
+
+      .info-box strong {
+        display: block;
+        margin-top: 6px;
+        color: white;
+      }
+
+      .section {
+        padding: 86px 0;
+      }
+
+      .section-header {
+        margin-bottom: 28px;
+      }
+
+      .section-header h2 {
+        margin: 0 0 10px;
+        font-size: clamp(2.2rem, 5vw, 3.4rem);
+        letter-spacing: -0.06em;
+        color: white;
+      }
+
+      .section-header p {
+        margin: 0;
+        max-width: 640px;
+        color: rgba(255,255,255,0.8);
+      }
+
+      .timeline {
+        display: grid;
+        gap: 18px;
+      }
+
+      .timeline-item {
+        display: grid;
+        grid-template-columns: 180px 1fr;
+        gap: 18px;
+        background: rgba(10, 18, 26, 0.35);
+        box-shadow: var(--shadow);
+        border: 1px solid rgba(255,255,255,0.18);
+        border-radius: 20px;
+        padding: 24px 22px;
+        backdrop-filter: blur(6px);
+      }
+
+      .timeline-year {
+        font-weight: 700;
+        color: var(--secondary);
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+      }
+
+      .timeline-item h3 {
+        margin: 0 0 8px;
+        color: white;
+        font-size: 1.5rem;
+      }
+
+      .timeline-item p {
+        margin: 0;
+        color: rgba(255,255,255,0.82);
+      }
+
+      .skill-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 22px;
+      }
+
+      .skill-card {
+        background: rgba(10, 18, 26, 0.38);
+        border: 1px solid rgba(255,255,255,0.18);
+        border-radius: 22px;
+        padding: 24px 22px;
+        box-shadow: var(--shadow);
+        backdrop-filter: blur(6px);
+      }
+
+      .skill-icon {
+        width: 54px;
+        height: 54px;
+        border-radius: 16px;
+        display: grid;
+        place-items: center;
+        background: linear-gradient(135deg, rgba(249,115,22,0.18), rgba(109,40,217,0.12));
+        color: var(--primary-dark);
+        font-weight: 700;
+        margin-bottom: 16px;
+      }
+
+      .skill-card h3 {
+        margin: 0 0 10px;
+        font-size: 1.5rem;
+        color: white;
+      }
+
+      .skill-card p {
+        margin: 0;
+        color: rgba(255,255,255,0.82);
+      }
+
+      .two-col {
+        display: grid;
+        grid-template-columns: 0.92fr 1.08fr;
+        gap: 24px;
+      }
+
+      .panel {
+        background: rgba(10, 18, 26, 0.35);
+        border-radius: 24px;
+        border: 1px solid rgba(255,255,255,0.18);
+        box-shadow: var(--shadow);
+        padding: 28px;
+        backdrop-filter: blur(6px);
+      }
+
+      .panel h3 {
+        margin-top: 0;
+        font-size: 2rem;
+        color: white;
+      }
+
+      .panel p {
+        color: rgba(255,255,255,0.8);
+      }
+
+      .checklist {
+        list-style: none;
+        padding: 0;
+        margin: 20px 0 0;
+        display: grid;
+        gap: 12px;
+      }
+
+      .checklist li {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: white;
+        font-weight: 600;
+      }
+
+      .check {
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        background: linear-gradient(135deg, var(--secondary), #2dd4bf);
+        color: white;
+      }
+
+      .cta {
+        padding: 80px 0 100px;
+      }
+
+      .cta-box {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 18px;
+        padding: 32px 28px;
+        border-radius: 24px;
+        background: linear-gradient(135deg, #111827, #2d3748);
+        color: white;
+        box-shadow: var(--shadow);
+      }
+
+      .cta-box h3 {
+        margin: 0 0 6px;
+        font-size: clamp(1.8rem, 4vw, 2.8rem);
+        letter-spacing: -0.04em;
+      }
+
+      .cta-box p {
+        margin: 0;
+        color: rgba(255,255,255,0.92);
+      }
+
+      .cta-box .btn {
+        background: linear-gradient(135deg, var(--primary), #fb923c);
+        color: white;
+        box-shadow: var(--shadow);
+      }
+
+      footer {
+        padding: 28px 0 48px;
+        border-top: 1px solid rgba(255,255,255,0.18);
+        color: rgba(255,255,255,0.8);
+      }
+
+      .footer-row {
+        display: flex;
+        justify-content: space-between;
+        gap: 18px;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+
+      .footer-links {
+        display: flex;
+        gap: 18px;
+      }
+
+      @media (max-width: 900px) {
+        .hero-grid,
+        .two-col,
+        .skill-grid,
+        .timeline-item {
+          grid-template-columns: 1fr;
+        }
+
+        .nav-links {
+          display: none;
+        }
+
+        .cta-box {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+      }
+
+      @media (max-width: 560px) {
+        .actions {
+          flex-direction: column;
+          align-items: stretch;
+        }
+
+        .btn {
+          width: 100%;
+        }
+
+        .mini-stats {
+          flex-direction: column;
+          align-items: stretch;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="container nav">
+        <a href="#home" class="brand" aria-label="Famii home page">
+          <span class="brand-mark">F</span>
+          <span>Famii</span>
+        </a>
+
+        <nav class="nav-links" aria-label="Main navigation">
+          <a href="#about">About Me</a>
+          <a href="#journey">Journey</a>
+          <a href="#skills">Skills</a>
+          <a href="#goals">Goals</a>
+          <a href="#contact">Contact</a>
+        </nav>
+
+        <a href="#contact" class="nav-btn">Let's connect</a>
+      </div>
+    </header>
+
+    <main id="home">
+      <section class="hero">
+        <div class="container hero-grid">
+          <div>
+            <span class="eyebrow">Student Developer</span>
+            <h1>
+              Hello, I am <span class="highlight">Famii Mahadii</span>
+            </h1>
+            <p class="lead">
+              I began my journey in technology from Grade 10, when I first became
+              curious about how websites, apps, and software work. Since then, I
+              have been learning HTML, CSS, and C++, and I dream of becoming a
+              full-stack developer and software engineer.
+            </p>
+
+            <div class="actions">
+              <a href="#journey" class="btn btn-primary">My journey</a>
+              <a href="#skills" class="btn btn-secondary">My skills</a>
+            </div>
+
+            <div class="mini-stats">
+              <div class="mini-stat">
+                <strong>Grade 10</strong>
+                <span>Started</span>
+              </div>
+              <div class="mini-stat">
+                <strong>HTML</strong>
+                <span>Structure</span>
+              </div>
+              <div class="mini-stat">
+                <strong>CSS</strong>
+                <span>Design</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="photo-card">
+            <div class="photo-box">
+              <div class="avatar">FM</div>
+              <h3>Famii Mahadii</h3>
+              <p>Learning to build digital experiences.</p>
+
+              <div class="info-row">
+                <div class="info-box">
+                  <span>Focus</span>
+                  <strong>Web</strong>
+                </div>
+                <div class="info-box">
+                  <span>Goal</span>
+                  <strong>Full-stack</strong>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="about">
+        <div class="container two-col">
+          <div class="panel">
+            <h3>About Me</h3>
+            <p>
+              Hello! I am Famii Mahadii, a student who is passionate about technology,
+              creativity, and problem-solving. I started learning about coding when I was
+              in Grade 10, and ever since, I have been exploring how software and websites
+              can be used to solve real-world problems and make life easier.
+            </p>
+            <p>
+              I enjoy learning new things, improving my skills, and building projects that
+              reflect both my creativity and my dedication. I am especially interested in
+              web development, software engineering, and creating digital experiences that
+              are useful and meaningful.
+            </p>
+          </div>
+
+          <div class="panel">
+            <h3>Why I keep learning</h3>
+            <p>
+              I believe that growth comes from curiosity, consistency, and hard work. Every
+              project I build helps me improve my design thinking, coding logic, and ability
+              to solve challenges step by step.
+            </p>
+            <ul class="checklist">
+              <li><span class="check">✓</span> Curiosity-driven learner</li>
+              <li><span class="check">✓</span> Passionate about coding</li>
+              <li><span class="check">✓</span> Working toward becoming a full-stack developer</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="journey">
+        <div class="container">
+          <div class="section-header">
+            <h2>My journey</h2>
+            <p>
+              My path started with curiosity and is growing through consistent effort,
+              creativity, and learning.
+            </p>
+          </div>
+
+          <div class="timeline">
+            <article class="timeline-item">
+              <div class="timeline-year">Grade 10</div>
+              <div>
+                <h3>Curiosity begins</h3>
+                <p>
+                  I started asking how websites and programs are built, which made me
+                  interested in computers, coding, and the world of technology.
+                </p>
+              </div>
+            </article>
+
+            <article class="timeline-item">
+              <div class="timeline-year">Learning</div>
+              <div>
+                <h3>Building the foundation</h3>
+                <p>
+                  I began learning HTML, CSS, and C++, which helped me understand
+                  structure, design, and problem-solving in programming.
+                </p>
+              </div>
+            </article>
+
+            <article class="timeline-item">
+              <div class="timeline-year">Now</div>
+              <div>
+                <h3>I am now Second Year Software Engineering student at Haramaya University And I Growing with purpose</h3>
+                <p>
+                  I am still learning and improving every day. My goal is to become a
+                  full-stack developer and software engineer who creates useful things.
+                </p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="skills">
+        <div class="container">
+          <div class="section-header">
+            <h2>Skills</h2>
+            <p>
+              I am developing practical abilities in coding and web design to support
+              my dream of becoming a software engineer.
+            </p>
+          </div>
+
+          <div class="skill-grid">
+            <article class="skill-card">
+              <div class="skill-icon">H</div>
+              <h3>HTML</h3>
+              <p>
+                I use HTML to build clean and structured web pages with strong content
+                organization.
+              </p>
+            </article>
+
+            <article class="skill-card">
+              <div class="skill-icon">C</div>
+              <h3>CSS</h3>
+              <p>
+                I create layouts and styles that are attractive, responsive, and easy
+                for users to enjoy.
+              </p>
+            </article>
+
+            <article class="skill-card">
+              <div class="skill-icon">C++</div>
+              <h3>C++</h3>
+              <p>
+                C++ helps strengthen logic, design thinking, and problem-solving, which
+                are essential in software development.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="goals">
+        <div class="container two-col">
+          <div class="panel">
+            <h3>My hope</h3>
+            <p>
+              My biggest dream is to become a full-stack developer and software
+              engineer. I want to build websites, programs, and systems that help
+              people and solve real-world problems.
+            </p>
+
+            <ul class="checklist">
+              <li><span class="check">✓</span> Learn full-stack development</li>
+              <li><span class="check">✓</span> Become a strong software engineer</li>
+              <li><span class="check">✓</span> Build useful projects</li>
+            </ul>
+          </div>
+
+          <div class="panel">
+            <h3>What I believe</h3>
+            <p>
+              I believe hard work, curiosity, and consistent effort are the key to
+              success. I am still learning, but I am determined to keep improving and
+              moving toward my future in technology.
+            </p>
+            <p>
+              My goal is to combine creativity with logic and build digital solutions
+              that make a difference in the world.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="cta" id="contact">
+        <div class="container">
+          <div class="cta-box">
+            <div>
+              <h3>Let’s grow together.</h3>
+              <p>
+                I am learning every day and working toward becoming a professional full-stack developer and software engineer.
+              </p>
+            </div>
+            <a href="mailto:famiimahadii1@gmail.com" class="btn">famiimahadii1@gmail.com</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container footer-row">
+        <div>© 2026 Famii Mahadii</div>
+        <div class="footer-links">
+          <a href="#journey">Journey</a>
+          <a href="#skills">Skills</a>
+          <a href="#goals">Goals</a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
